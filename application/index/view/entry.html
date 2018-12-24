@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1.0">
+    <title>Try to find me</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/index.css">
+    <!--<link rel="stylesheet" type="text/css" href="https://lib.baomitu.com/layer/3.1.1/mobile/need/layer.css">-->
+</head>
+<body>
+
+<div>
+    <p class="desc chocolate">Hi, my dear friend, welcome to enjoy the journey.</p>
+    <p>&nbsp;</p>
+    <p>Please input your name:</p>
+    <input class="entryInput" id="username" name="username" type="text" placeholder="input your name">
+    <button class="entryBtn" id="btnGo" type="button">Go</button>
+
+    <div class="bottom grey">[ Try to find me ]</div>
+</div>
+
+<!--百度CDN-->
+<script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://lib.baomitu.com/layer/3.1.1/mobile/layer.js"></script>
+<script>
+    $("#btnGo").click(function () {
+        var username = $('#username').val();
+        if (username.length <= 3) {
+            layer.open({
+                content: 'Please input more than 3 letters.',
+                style: 'border:none; background-color:#FF4351; color:#fff; font-size:1rem;',
+                btn: 'Got it'
+            });
+            return false;
+        }
+        $.ajax({
+            url: "{:url('index/index/entry')}",
+            type: "POST",
+            data: {username: username},
+            dataType: "json",
+            success: function (data) {
+                if (data.status) {
+                    location.href = "{:url('index/index/index')}";
+                } else {
+                    layer.open({
+                        content: data.msg,
+                        style: 'border:none; background-color:#FF4351; color:#fff; font-size:1rem;',
+                        btn: 'Got it'
+                    });
+                }
+            },
+            error: function (data) {
+                layer.open({
+                    content: 'Oops, some error',
+                    style: 'border:none; background-color:#FF4351; color:#fff; font-size:1rem;',
+                    btn: 'Got it'
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

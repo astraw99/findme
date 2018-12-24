@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1.0">
+    <title>Try to find me</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/index.css">
+</head>
+<body>
+
+<div>
+    <p class="desc">{$desc|default="My dear friend, welcome to me"}</p>
+    <p class="round">Round: {$round + 1}/10, select times: {$round}/<span id="total">{$total}</span></p>
+
+    <div class="selectBtn">
+        <ul>
+            {volist name="list" id="data"}
+            <li><a class="selectOpt" optVal="{$data}" href="javascript:void(0)">{$data}</a></li>
+            {/volist}
+        </ul>
+    </div>
+
+    <br/>
+    <br/>
+    <span class="grey">[ Try to find me ]</span>
+</div>
+
+<!--百度CDN-->
+<script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://lib.baomitu.com/layer/3.1.1/mobile/layer.js"></script>
+<script>
+    $(".selectOpt").click(function () {
+        var optVal = $(this).attr('optVal');
+        var that = $(this);
+        $.ajax({
+            url: "{:url('index/index/selectSubmit')}",
+            type: "POST",
+            data: {optVal: optVal},
+            dataType: "json",
+            success: function (data) {
+                if (data.status == 1) {
+                    layer.open({
+                        content: 'Great! You did very well. The answer is [ ' + data.answer + ' ]',
+                        style: 'border:none; background-color:#78BA32; color:#fff; font-size:1rem;',
+                        btn: 'Got it',
+                        yes: function (index) {
+                            location.href = "{:url('index/index/index')}";
+                        }
+                    });
+                } else if (data.status == 2) {
+                    layer.open({
+                        content: 'Oops! You did not find me.',
+                        style: 'border:none; background-color:#FF4351; color:#fff; font-size:1rem;',
+                        btn: 'Got it'
+                    });
+                    that.attr("disabled", true).css("pointer-events", "none");
+                    $('#total').text(data.total);
+                } else {
+                    layer.open({
+                        content: data.msg,
+                        style: 'border:none; background-color:#FF4351; color:#fff; font-size:1rem;',
+                        btn: 'Got it'
+                    });
+                }
+            },
+            error: function (data) {
+                layer.open({
+                    content: 'Oops, some error',
+                    style: 'border:none; background-color:#FF4351; color:#fff; font-size:1rem;',
+                    btn: 'Got it'
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

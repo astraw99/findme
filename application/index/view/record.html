@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1.0">
+    <title>Try to find me</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/index.css">
+</head>
+<body>
+
+<div>
+    <p class="desc chocolate">Congratulations!</p>
+    <p class="round">You've passed all the selections and finally find me. Who am I? Try to dig in...</p>
+
+    <div>
+        <ul>
+            {volist name="list" id="data"}
+            <li class="record grey">{$data.id}. {$data.username} [ <span class="chocolate">{$data.select_value} - {$data.answer}</span> ] &nbsp;&nbsp;&nbsp;{$data.create_time}</li>
+            {/volist}
+        </ul>
+    </div>
+
+    <br/>
+    <br/>
+    <span class="grey">My dear friend:</span>
+    <br>
+    <span class="grey">Use your logic, you will find who am I</span>
+    <br>
+    <span class="grey">...</span>
+</div>
+
+</body>
+</html>
