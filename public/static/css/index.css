@@ -1,0 +1,178 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: #2E5CD5;
+    cursor: pointer;
+    text-decoration: none
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+body {
+    background: #fff;
+    font-family: "Century Gothic", "Microsoft yahei";
+    /*font-family: "Microsoft yahei";*/
+    color: #333;
+    font-size: 16px;
+    width: 80%;
+    text-align: center;
+    margin: 20px auto;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+p {
+    line-height: 1.6em;
+    font-size: 1.5rem;
+}
+
+.entryInput {
+    font-size: 13px;
+    min-height: 32px;
+    margin: 0;
+    padding: 7px 8px;
+    outline: none;
+    color: #333;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: right center;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    transition: all 0.15s ease-in;
+    -webkit-transition: all 0.15s ease-in 0s;
+    vertical-align: middle;
+}
+
+.entryBtn {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 8px 15px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+    background-color: #eaeaea;
+    background-image: -moz-linear-gradient(#fafafa, #eaeaea);
+    background-image: -webkit-linear-gradient(#fafafa, #eaeaea);
+    background-image: linear-gradient(#fafafa, #eaeaea);
+    background-repeat: repeat-x;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    border-bottom-color: #c5c5c5;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+    vertical-align: middle;
+    cursor: pointer;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+}
+
+.desc {
+    font-size: 2rem;
+    padding-bottom: 1rem;
+    line-height: 100%;
+}
+
+.round {
+    background: chocolate;
+    border-radius: 1rem;
+    line-height: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.bottom {
+    position: fixed;
+    bottom: 10%;
+    text-align: center;
+    width: 90%;
+}
+
+/*移动端自适应*/
+@media screen and (max-width: 600px) {
+    body {
+        width: 98%;
+    }
+
+    .record {
+        font-size: 1rem;
+    }
+
+    .bottom {
+        width: 98%;
+    }
+}
+
+.chocolate {
+    color: chocolate;
+}
+
+.grey {
+    color: #999;
+}
+
+.selectBtn ul, li {
+    list-style: none;
+    display: block;
+    padding-left: 0;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.selectBtn ul li {
+    border: solid 1px #d6d6d6;
+    border-radius: 0.2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    margin: 0.8rem auto;
+}
+
+.selectBtn li a {
+    display: block;
+    color: #7d7d7d;
+    border-radius: 0.2rem;
+}
+
+.selectBtn li:hover a {
+    color: #fdfdfd;
+    background-color: #1d1f20;
+    border: solid 1px #1d1f20;
+}
+
+.selectBtn li.active a {
+    color: #fdfdfd;
+    background-color: #1d1f20;
+    border: solid 1px #1d1f20;
+}
+
+.selectBtn li a[disabled="disabled"], .selectBtn li:hover a[disabled="disabled"] {
+    background-color: #999;
+    color: #333;
+    border: solid 1px #999;
+    border-radius: 0.2rem;
+}
